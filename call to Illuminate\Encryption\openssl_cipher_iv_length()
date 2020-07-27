@@ -1,0 +1,10 @@
+Tips on how to resolve PHP libraries issues
+
+When attempting to run larval with php artisan serve command, one openssl_cipher_iv_length() error was encountered particularly, 
+call to Illuminate\Encryption\openssl_cipher_iv_length(). 
+
+So I ventured to figure out how to resolve this issue but there was no particular solution available although the suggestions were clues on how to approach the issue. Obviously, the openssl library was broken. This is a php library and all other php-related tools, like composer and laravel, were affected. Composer is a dependancy manager for php that means, laravel requires php and will need composer to install, uninstall, update dependancies of apps built with laravel. The tip is to uninstall PHP, composer and laravel and reinstall all these again in the same order.
+
+After the installation, the terminal still had the formal PHP in the /usr/local/bin directory, where most programs are installed by default so it was necessary to ensure the recent PHP installation (in this case 7.4.8) resides in that directory. PHP was installed with brew on my system so it was in the /usr/local/Cellar/php/7.4.8/bin/. It was in this bin directory that the newest PHP version was installed. But if you check the global PHP version with the php -v command, the terminal points to the /usr/local/bin directory. Then, simply copy all the files in the /usr/local/Cellar/php/7.4.8/bin/ to the /usr/local/bin (where all the files in the brew installation directory resides).
+
+Afterwards, install composer and laravel to resolve all the issues with PHP and its extensions.
